@@ -1,0 +1,127 @@
+$blue: rgb(25, 70, 157)
+
+$em: 15px
+$line-height: 22px
+
+$section-padding-top: 10px
+$section-padding-bottom: 1px
+$section-padding: $section-padding-top 25px $section-padding-bottom 50px
+
+html, body
+  height: 100%
+  background: rgb(245, 245, 255)
+
+#sidebar, #kbd-shortcuts
+  z-index: 1
+
+#markup
+  position: relative
+  max-width: none
+  min-height: 100%
+  padding: 0
+
+#background
+  position: absolute
+  top: 0
+  left: 0
+  bottom: 0
+  width: 525px
+  border-right: 1px solid rgb(229, 229, 238)
+  background: white
+
+#docco
+  position: relative
+  padding-bottom: 18px
+  font: #{$em}/$line-height "Palatino Linotype", "Book Antiqua", Palatino, FreeSerif, serif
+  color: rgb(37, 37, 25)
+
+  noscript
+    display: block
+    padding: $section-padding
+    p
+      padding-top: $section-padding-bottom + $section-padding-top
+
+  td
+    border: none
+    outline: none
+
+  a
+    color: rgb(38, 26, 59)
+    text-decoration: underline
+    &:focus
+      color: $blue
+
+  h1, h2, h3, h4, h5, h6
+    margin: 0 0 $em
+    line-height: $line-height
+
+  h1
+    margin-top: 40px
+    font-size: $em * 2
+
+  h2
+    font-size: $em * 3/2
+
+  h3
+    font-size: $em * 7/6
+
+  h4, h5, h6
+    font-size: $em
+
+  p
+    margin: 0 0 $em
+
+  blockquote
+    font-family: inherit
+    color: inherit
+
+  pre, code
+    margin: 0
+    border: none
+    background: none
+    padding: 0
+    font: 12px/1.5 Menlo, Monaco, Consolas, "Lucida Console", monospace
+
+  .docs
+    $width: 450px
+    min-width: $width
+    max-width: $width
+    min-height: 5px
+    padding: $section-padding
+    vertical-align: top
+    text-align: left
+    overflow-x: hidden
+    code
+      border: 1px solid rgb(222, 222, 222)
+      background: rgb(248, 248, 255)
+      padding: 0 2px
+    pre
+      margin: $em 0
+      padding-left: $em
+      code
+        border: none
+        background: none
+        padding: 0
+
+  .code
+    width: 100%
+    padding: 14px 15px 16px (25px + 1px) // Docco uses 1px left border
+    vertical-align: top
+
+
+// # Syntax highlighting #
+
+.atn, .dec, .kwd, .tag, .typ, .var
+  color: rgb(149, 65, 33)
+
+.atv, .str
+  color: rgb(33, 145, 97)
+
+.clo, .opn, .pun
+  color: inherit
+
+.com
+  color: rgb(153, 153, 153)
+
+.lit
+  color: $blue
