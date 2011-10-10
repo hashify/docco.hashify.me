@@ -37,7 +37,7 @@
   render = function(title, ext, text) {
     var code, html, section, _i, _len, _ref;
     html = '<table cellpadding=0 cellspacing=0>';
-    html += "<tr><th class=docs><h1>" + title + "</h1></th></tr>";
+    html += "<tr><th class=docs><h1>" + (escape(title)) + "</h1></th></tr>";
     _ref = parse(ext, text);
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       section = _ref[_i];

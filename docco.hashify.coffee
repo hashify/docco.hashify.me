@@ -23,7 +23,7 @@ escape = (text) ->
 
 render = (title, ext, text) ->
   html = '<table cellpadding=0 cellspacing=0>'
-  html += "<tr><th class=docs><h1>#{title}</h1></th></tr>"
+  html += "<tr><th class=docs><h1>#{escape title}</h1></th></tr>"
   for section in parse ext, text
     code = '<code'
     code += " class=language-#{ext}" if ext
