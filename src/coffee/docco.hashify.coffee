@@ -1,4 +1,14 @@
-showdown = new Showdown 'datetimes', 'abbreviations'
+# XXX: Remove unwanted subscriber.
+Hashify.channel.subscriptions.textchange.subs.splice(2, 1)
+
+reset = ->
+  document.getElementById('markup').innerHTML = [
+    '<div id=background></div>'
+    '<div id=docco></div>'
+  ].join('\n')
+
+reset()
+document.body.style.display = 'block'
 
 # Modified version of Docco's `parse` function.
 parse = (ext, text) ->
@@ -21,17 +31,17 @@ parse = (ext, text) ->
 escape = (text) ->
   text.replace /[&<>"'`]/g, (chr) -> "&##{chr.charCodeAt 0};"
 
+highlight = (code) ->
+  hljs.highlightAuto(code).value
+
 render = (title, ext, text) ->
   html = '<table cellpadding=0 cellspacing=0>'
   html += "<tr><th class=docs><h1>#{escape title}</h1></th></tr>"
   for section in parse ext, text
-    code = '<code'
-    code += " class=language-#{ext}" if ext
-    code += ">#{escape section.code}</code>"
     html += """
       <tr>
-        <td class=docs>#{showdown.convert section.docs}</td>
-        <td class=code><pre class=prettyprint>#{code}</pre></td>
+        <td class=docs>#{marked section.docs, {highlight}}</td>
+        <td class=code><pre><code>#{highlight section.code}</code></pre></td>
       </tr> """
   html += '</table>'
 
@@ -45,10 +55,7 @@ for symbol, languages of symbols
   for language in languages
     regexes[language] = regex
 
-el = document.getElementById 'docco'
-
-# `Hashify.render` is invoked each time the editor's value changes.
-Hashify.render = (text) ->
+Hashify.channel.subscribe 'textchange', (text) ->
   text = text.replace /\s+$/, ''
   title = 'Untitled'
   ext = null
@@ -59,8 +66,8 @@ Hashify.render = (text) ->
     if match = /[.](\w+)$/.exec title
       ext = match[1]
 
-  el.innerHTML = render title, ext, text
-  do prettyPrint
+  reset()
+  document.getElementById('docco').innerHTML = render title, ext, text
 
 # Always use presentation mode for nonempty documents.
 {hash, pathname, search} = location

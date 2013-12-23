@@ -1,0 +1,3 @@
+[submodule "hashify.me"]
+	path = hashify.me
+	url = git@github.com:hashify/hashify.me.git

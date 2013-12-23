@@ -3,22 +3,20 @@
   <head>
     <meta charset=utf-8 />
     <title>Hashify</title>
-    <link rel=stylesheet href=/hashify-editor/hashify-editor.css />
-    <link rel=stylesheet href=/hashify.css />
-    <link rel=stylesheet href=/docco.hashify.css />
+    <link rel=stylesheet href=/style.css />
     <link rel="shortcut icon" href=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAANklEQVQ4y2P4//8/AyUYwQAygfgfCONUDJVnAGsbNQCvAUDcgAMTbcBfHJhOBoxG40AZQC4GAGFDLqEWPyCLAAAAAElFTkSuQmCC />
     <link rel=apple-touch-icon href=/apple-touch-icon-57x57.png />
     <link rel=apple-touch-icon href=/apple-touch-icon-72x72.png sizes=72x72 />
     <link rel=apple-touch-icon href=/apple-touch-icon-114x114.png sizes=114x114 />
     <link rel=author href=/humans.txt />
   </head>
-  <body>
+  <body style=display:none>
     <div id=sidebar>
       <div id=editor>
         <textarea id=markdown>example.coffee
 
 # Fill `container` with `liquid` of some sort.
-# *Preferably [coffee](http://jashkenas.github.com/coffee-script/)!*
+# *Preferably [coffee](http://coffeescript.org/)!*
 fill = (container, liquid = "coffee") ->
   "Filling the #{container} with #{liquid}..."
 </textarea>
@@ -31,14 +29,13 @@ fill = (container, liquid = "coffee") ->
       <div id=credits>
         <h4>Source</h4>
         <ul>
-          <li><a href=https://bitbucket.org/davidchambers/base64.js>Base64</a></li>
-          <li><a href=http://jashkenas.github.com/docco/>Docco</a></li>
-          <li><a href=https://bitbucket.org/davidchambers/hashify.me>Hashify</a></li>
-          <li><a href=https://bitbucket.org/davidchambers/hashify-editor>Hashify Editor</a></li>
-          <li><a href=http://code.google.com/p/google-code-prettify/>Prettify</a></li>
-          <li><a href=http://davidchambers.bitbucket.org/showdown/>Showdown</a></li>
+          <li><a href=http://jashkenas.github.io/docco/>Docco</a></li>
+          <li><a href=https://github.com/hashify/hashify.me>Hashify</a></li>
+          <li><a href=https://github.com/hashify/hashify-editor>Hashify Editor</a></li>
+          <li><a href=https://github.com/isagalaev/highlight.js>Highlight.js</a></li>
+          <li><a href=https://github.com/chjj/marked>marked</a></li>
         </ul>
-        <p>Copyright 2011 <a href=http://twitter.com/davidchambers>David Chambers</a>.</p>
+        <p>Copyright 2011 <a href=http://davidchambers.me/>David Chambers</a>.</p>
       </div>
       <div id=dragger></div>
     </div>
@@ -84,25 +81,6 @@ fill = (container, liquid = "coffee") ->
       </div>
     </div>
     <div id=mask></div>
-    <script src=/LAB.js></script>
-    <script>
-      location.hostname === 'docco.hashify.me'?
-        window.atob && window.btoa?
-          $LAB
-            .script('/concat.min.js'):
-          $LAB
-            .script('/base64/base64.min.js').wait()
-            .script('/concat.min.js'):
-        $LAB
-          .script('/ga.js')
-          .script('/prettify.js')
-          .script('/base64/base64.js')
-          .script('/showdown/lib/showdown.js').wait()
-          .script('/showdown/lib/datetimes.js')
-          .script('/showdown/lib/abbreviations.js')
-          .script('/hashify-editor/hashify-editor.js').wait()
-          .script('/docco.hashify.js').wait()
-          .script('/hashify.js');
-    </script>
+    <script src=/concat.js></script>
   </body>
 </html>

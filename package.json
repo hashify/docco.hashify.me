@@ -1,0 +1,13 @@
+{
+  "name": "docco.hashify.me",
+  "version": "1.0.0",
+  "description": "Hashify meets Docco",
+  "author": "David Chambers <dc@davidchambers.me>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hashify/docco.hashify.me.git"
+  },
+  "devDependencies": {
+    "coffee-script": "1.6.x"
+  }
+}
