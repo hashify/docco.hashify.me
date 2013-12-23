@@ -1,5 +1,4 @@
 COFFEE = node_modules/.bin/coffee
-COMPASS = compass compile --no-line-comments
 
 
 .PHONY: all
@@ -26,9 +25,6 @@ public/%: assets/%
 public/style.css: hashify.me/public/style.css lib/css/docco.hashify.css
 	cat $^ > $@
 
-lib/css/docco.hashify.css: src/sass/docco.hashify.sass
-	$(COMPASS) --sass-dir $(dir $<) --css-dir $(dir $@)
-
 
 public/concat.js: hashify.me/public/concat.js lib/js/docco.hashify.js
 	cat $^ > $@
@@ -48,4 +44,4 @@ setup:
 .PHONY: clean
 clean:
 	make -C hashify.me clean
-	rm -rf lib public nginx.conf
+	rm -rf lib/js public nginx.conf

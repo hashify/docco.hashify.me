@@ -1,29 +1,24 @@
 ### Installation
 
-1.  Install [Compass](http://compass-style.org/):
-
-        gem update --system
-        gem install compass
-
-2.  Install dependencies:
+1.  Install dependencies:
 
         make setup
 
-3.  Build:
+2.  Build:
 
         make
 
-4.  Install [nginx](http://nginx.com/).
+3.  Install [nginx](http://nginx.com/).
 
-5.  Create a symlink to nginx.conf from wherever nginx sites live. For example:
+4.  Create a symlink to nginx.conf from wherever nginx sites live. For example:
 
         ln -s "$(pwd)/nginx.conf" /opt/local/etc/nginx/sites-available/docco.hashify.me
 
-6.  Activate the site if necessary. For example:
+5.  Activate the site if necessary. For example:
 
         ln -s ../sites-available/docco.hashify.me /opt/local/etc/nginx/sites-enabled/docco.hashify.me
 
-7.  Reload nginx:
+6.  Reload nginx:
 
         sudo nginx -s reload
 
